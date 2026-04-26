@@ -9,7 +9,7 @@ students = [
 
 @app.route('/api/health')
 def health():
-    return jsonify({"status": "ok"}), 200
+    return jsonify({"status": "ok"}), 500
 
 @app.route('/api/students', methods=['GET'])
 def get_students():
@@ -31,4 +31,5 @@ def add_student():
     students.append(new_student)
     return jsonify(new_student), 201
 
-return jsonify({"status": "ok"}), 500
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
