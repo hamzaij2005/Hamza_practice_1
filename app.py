@@ -20,7 +20,7 @@ def get_student(id):
     for s in students:
         if s["id"] == id:
             return jsonify(s), 200
-    return jsonify({"status": "ok"}), 500
+    return jsonify({"error": "Not found"}), 404
 
 @app.route('/api/students', methods=['POST'])
 def add_student():
@@ -31,5 +31,4 @@ def add_student():
     students.append(new_student)
     return jsonify(new_student), 201
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+return jsonify({"status": "ok"}), 500
